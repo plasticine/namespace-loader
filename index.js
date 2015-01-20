@@ -1,4 +1,5 @@
 var path = require('path');
+var loaderUtils = require('loader-utils');
 
 var FOOTER = "/*** EXPORTS FROM namespace-loader ***/\n";
 
@@ -32,7 +33,7 @@ var convertNamespaceStringToDeclaration = function(ns) {
 module.exports = function() {};
 module.exports = function(content) {
   this.cacheable && this.cacheable();
-  var relativeRsourcePath = path.relative(this.options.context, this.resourcePath);
+  var relativeRsourcePath = path.relative(this.options.resolve.root, this.resourcePath);
   var nameSpaceStrings = convertResourceToNamespaceStrings(relativeRsourcePath);
   var namespace = [
     nameSpaceStrings.slice(0, nameSpaceStrings.length - 1).reduce(function(memo, item){

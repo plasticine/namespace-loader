@@ -17,5 +17,8 @@
     "loader",
     "webpack-loader",
     "namespace"
-  ]
+  ],
+  "dependencies": {
+    "loader-utils": "^0.2.6"
+  }
 }
